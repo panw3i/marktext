@@ -99,7 +99,7 @@ class Keybindings {
       ['view.command-palette', 'CmdOrCtrl+Shift+P'],
       ['view.source-code-mode', 'CmdOrCtrl+Alt+S'],
       ['view.typewriter-mode', 'CmdOrCtrl+Alt+T'],
-      ['view.focus-mode', 'CmdOrCtrl+Shift+F'],
+      ['view.focus-mode', 'CmdOrCtrl+Shift+J'],
       ['view.toggle-sidebar', 'CmdOrCtrl+J'],
       ['view.toggle-tabbar', 'CmdOrCtrl+Alt+B'],
       ['view.toggle-dev-tools', 'CmdOrCtrl+Alt+I'],
@@ -110,6 +110,16 @@ class Keybindings {
       ['tabs.cycle-backward', 'CmdOrCtrl+Shift+Tab'],
       ['tabs.switch-to-left', 'CmdOrCtrl+PageUp'],
       ['tabs.switch-to-right', 'CmdOrCtrl+PageDown'],
+      ['tabs.switch-to-first', 'Alt+1'],
+      ['tabs.switch-to-second', 'Alt+2'],
+      ['tabs.switch-to-third', 'Alt+3'],
+      ['tabs.switch-to-fourth', 'Alt+4'],
+      ['tabs.switch-to-fifth', 'Alt+5'],
+      ['tabs.switch-to-sixth', 'Alt+6'],
+      ['tabs.switch-to-seventh', 'Alt+7'],
+      ['tabs.switch-to-eighth', 'Alt+8'],
+      ['tabs.switch-to-ninth', 'Alt+9'],
+      ['tabs.switch-to-tenth', 'Alt+0'],
       ['file.quick-open', 'CmdOrCtrl+P']
     ])
 

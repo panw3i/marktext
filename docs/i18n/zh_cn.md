@@ -38,7 +38,7 @@
   </a>
   <!-- Downloads latest release -->
   <a href="https://github.com/marktext/marktext/releases/latest">
-    <img src="https://img.shields.io/github/downloads/marktext/marktext/v0.16.1/total.svg" alt="latest download">
+    <img src="https://img.shields.io/github/downloads/marktext/marktext/v0.16.2/total.svg" alt="latest download">
   </a>
   <!-- sponsors -->
   <a href="https://opencollective.com/marktext">
@@ -92,6 +92,12 @@ Mark Text 是一个使用 MIT license 的开源项目，你将一直能够从 Gi
 ##### Patreon 和 OpenCollective 有什么不同？
 
 在 Patreon 赞助，它将直接赞助给创建 Mark Text 并继续维护 Mark Text 的 Luo Ran (@jocs)。在 Open Collective 赞助的所有费用都是透明的，这些赞助资金将用于 Mark Text 的开发、维护、在线和离线活动以及一些必要的资源（无论是在 Patreon 还是 Open Collective 赞助）。您的姓名或公司徽标将出现在 Mark Text 的 README 和官方网站中。
+
+**特别赞助商**
+
+<a href="https://www.dogedoge.com/">
+ <img src="https://www.dogedoge.com/assets/new_logo.min.png" width="100" height="100">
+</a>
 
 **白金赞助商**
 
@@ -167,7 +173,7 @@ Mark Text 是一个使用 MIT license 的开源项目，你将一直能够从 Gi
 
 | ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/mac-pass-sm.png)                                                                                                  | ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/windows-pass-sm.png)                                                                                                          | ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/linux-pass-sm.png)                                                                                                                        |
 |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| [![latest version](https://img.shields.io/github/downloads/marktext/marktext/latest/marktext.dmg.svg)](https://github.com/marktext/marktext/releases/download/v0.16.1/marktext.dmg) | [![latest version](https://img.shields.io/github/downloads/marktext/marktext/latest/marktext-setup.exe.svg)](https://github.com/marktext/marktext/releases/download/v0.16.1/marktext-setup.exe) | [![latest version](https://img.shields.io/github/downloads/marktext/marktext/latest/marktext-x86_64.AppImage.svg)](https://github.com/marktext/marktext/releases/download/v0.16.1/marktext-x86_64.AppImage) |
+| [![latest version](https://img.shields.io/github/downloads/marktext/marktext/latest/marktext.dmg.svg)](https://github.com/marktext/marktext/releases/download/v0.16.2/marktext.dmg) | [![latest version](https://img.shields.io/github/downloads/marktext/marktext/latest/marktext-setup.exe.svg)](https://github.com/marktext/marktext/releases/download/v0.16.2/marktext-setup.exe) | [![latest version](https://img.shields.io/github/downloads/marktext/marktext/latest/marktext-x86_64.AppImage.svg)](https://github.com/marktext/marktext/releases/download/v0.16.2/marktext-x86_64.AppImage) |
 
 想要看看最新版本有什么新特性？请参阅 [CHANGELOG](.github/CHANGELOG.md)。
 

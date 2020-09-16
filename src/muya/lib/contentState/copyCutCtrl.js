@@ -55,7 +55,7 @@ const copyCutCtrl = ContentState => {
       const { type, text, functionType } = startBlock
       // Fix issue #942
       if (type === 'span' && functionType === 'codeContent') {
-        const selectedText = escapeHtml(text.substring(start.offset, end.offset))
+        const selectedText = text.substring(start.offset, end.offset)
         return {
           html: marked(selectedText, this.muya.options),
           text: selectedText
@@ -212,7 +212,7 @@ const copyCutCtrl = ContentState => {
     }
 
     let htmlData = wrapper.innerHTML
-    const textData = escapeHtml(this.htmlToMarkdown(htmlData))
+    const textData = this.htmlToMarkdown(htmlData)
     htmlData = marked(textData)
 
     return { html: htmlData, text: textData }
@@ -244,8 +244,8 @@ const copyCutCtrl = ContentState => {
 
       const table = this.createTableInFigure({ rows: row, columns: column }, tableContents)
       this.appendChild(figureBlock, table)
-      const listIndentation = this.listIndentation
-      const markdown = new ExportMarkdown([figureBlock], listIndentation).generate()
+      const { isGitlabCompatibilityEnabled, listIndentation } = this
+      const markdown = new ExportMarkdown([figureBlock], listIndentation, isGitlabCompatibilityEnabled).generate()
 
       event.clipboardData.setData('text/html', '')
       event.clipboardData.setData('text/plain', markdown)
@@ -281,7 +281,9 @@ const copyCutCtrl = ContentState => {
       case 'copyAsHtml': {
         event.clipboardData.setData('text/html', '')
         event.clipboardData.setData('text/plain', getSanitizeHtml(text, {
-          superSubScript: this.muya.options.superSubScript
+          superSubScript: this.muya.options.superSubScript,
+          footnote: this.muya.options.footnote,
+          isGitlabCompatibilityEnabled: this.muya.options.isGitlabCompatibilityEnabled
         }))
         break
       }
@@ -290,8 +292,8 @@ const copyCutCtrl = ContentState => {
         const block = typeof copyInfo === 'string' ? this.getBlock(copyInfo) : copyInfo
         if (!block) return
         const anchor = this.getAnchor(block)
-        const listIndentation = this.listIndentation
-        const markdown = new ExportMarkdown([anchor], listIndentation).generate()
+        const { isGitlabCompatibilityEnabled, listIndentation } = this
+        const markdown = new ExportMarkdown([anchor], listIndentation, isGitlabCompatibilityEnabled).generate()
         event.clipboardData.setData('text/html', '')
         event.clipboardData.setData('text/plain', markdown)
         break

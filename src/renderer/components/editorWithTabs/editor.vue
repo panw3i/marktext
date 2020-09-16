@@ -76,7 +76,7 @@
 import { shell } from 'electron'
 import log from 'electron-log'
 import { mapState } from 'vuex'
-import ViewImage from 'view-image'
+// import ViewImage from 'view-image'
 import Muya from 'muya/lib'
 import TablePicker from 'muya/lib/ui/tablePicker'
 import QuickInsert from 'muya/lib/ui/quickInsert'
@@ -106,7 +106,7 @@ import { addCommonStyle, setEditorWidth } from '@/util/theme'
 
 import 'muya/themes/default.css'
 import '@/assets/themes/codemirror/one-dark.css'
-import 'view-image/lib/imgViewer.css'
+// import 'view-image/lib/imgViewer.css'
 import CloseIcon from '@/assets/icons/close.svg'
 
 const STANDAR_Y = 320
@@ -140,6 +140,7 @@ export default {
       frontmatterType: state => state.preferences.frontmatterType,
       superSubScript: state => state.preferences.superSubScript,
       footnote: state => state.preferences.footnote,
+      isGitlabCompatibilityEnabled: state => state.preferences.isGitlabCompatibilityEnabled,
       lineHeight: state => state.preferences.lineHeight,
       fontSize: state => state.preferences.fontSize,
       codeFontSize: state => state.preferences.codeFontSize,
@@ -281,6 +282,13 @@ export default {
       const { editor } = this
       if (value !== oldValue && editor) {
         editor.setOptions({ footnote: value }, true)
+      }
+    },
+
+    isGitlabCompatibilityEnabled: function (value, oldValue) {
+      const { editor } = this
+      if (value !== oldValue && editor) {
+        editor.setOptions({ isGitlabCompatibilityEnabled: value }, true)
       }
     },
 
@@ -517,6 +525,7 @@ export default {
         frontmatterType,
         superSubScript,
         footnote,
+        isGitlabCompatibilityEnabled,
         hideQuickInsertHint,
         editorLineWidth,
         theme,
@@ -564,6 +573,7 @@ export default {
         frontmatterType,
         superSubScript,
         footnote,
+        isGitlabCompatibilityEnabled,
         hideQuickInsertHint,
         hideLinkPopup,
         autoCheck,
@@ -641,27 +651,29 @@ export default {
             this.imageViewer.destroy()
           }
 
-          this.imageViewer = new ViewImage(this.$refs.imageViewer, {
-            url: data,
-            snapView: true
-          })
+          // Disabled due to #2120.
+          // this.imageViewer = new ViewImage(this.$refs.imageViewer, {
+          //   url: data,
+          //   snapView: true
+          // })
 
           this.setImageViewerVisible(true)
         }
       })
 
-      this.editor.on('preview-image', ({ data }) => {
-        if (this.imageViewer) {
-          this.imageViewer.destroy()
-        }
-
-        this.imageViewer = new ViewImage(this.$refs.imageViewer, {
-          url: data,
-          snapView: true
-        })
-
-        this.setImageViewerVisible(true)
-      })
+      // Disabled due to #2120.
+      // this.editor.on('preview-image', ({ data }) => {
+      //   if (this.imageViewer) {
+      //     this.imageViewer.destroy()
+      //   }
+      //
+      //   this.imageViewer = new ViewImage(this.$refs.imageViewer, {
+      //     url: data,
+      //     snapView: true
+      //   })
+      //
+      //   this.setImageViewerVisible(true)
+      // })
 
       this.editor.on('selectionChange', changes => {
         const { y } = changes.cursorCoords
