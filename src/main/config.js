@@ -2,10 +2,11 @@ export const isOsx = process.platform === 'darwin'
 export const isWindows = process.platform === 'win32'
 export const isLinux = process.platform === 'linux'
 
-export const editorWinOptions = {
+export const editorWinOptions = Object.freeze({
   minWidth: 550,
   minHeight: 350,
   webPreferences: {
+    enableRemoteModule: true,
     nodeIntegration: true,
     webSecurity: false
   },
@@ -14,12 +15,13 @@ export const editorWinOptions = {
   frame: false,
   titleBarStyle: 'hiddenInset',
   zoomFactor: 1.0
-}
+})
 
-export const preferencesWinOptions = {
+export const preferencesWinOptions = Object.freeze({
   width: 950,
   height: 650,
   webPreferences: {
+    enableRemoteModule: true,
     nodeIntegration: true,
     webSecurity: false
   },
@@ -34,9 +36,9 @@ export const preferencesWinOptions = {
   thickFrame: !isOsx,
   titleBarStyle: 'hiddenInset',
   zoomFactor: 1.0
-}
+})
 
-export const PANDOC_EXTENSIONS = [
+export const PANDOC_EXTENSIONS = Object.freeze([
   'html',
   'docx',
   'odt',
@@ -51,16 +53,16 @@ export const PANDOC_EXTENSIONS = [
   'textile',
   'opml',
   'epub'
-]
+])
 
-export const BLACK_LIST = [
+export const BLACK_LIST = Object.freeze([
   '$RECYCLE.BIN'
-]
+])
 
-export const EXTENSION_HASN = {
+export const EXTENSION_HASN = Object.freeze({
   styledHtml: '.html',
   pdf: '.pdf'
-}
+})
 
 export const TITLE_BAR_HEIGHT = isOsx ? 21 : 32
 export const LINE_ENDING_REG = /(?:\r\n|\n)/g
