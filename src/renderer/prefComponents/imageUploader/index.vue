@@ -73,11 +73,8 @@
 
 <script>
 import { shell } from 'electron'
-import fs from 'fs'
 import services, { isValidService } from './services.js'
 import legalNoticesCheckbox from './legalNoticesCheckbox'
-
-const { statSync, constants: { S_IXUSR, S_IXGRP, S_IXOTH } } = fs
 
 export default {
   components: {
@@ -126,13 +123,6 @@ export default {
     },
     cliScriptDisable () {
       if (!this.cliScript) {
-        return true
-      }
-      try {
-        const stat = statSync(this.cliScript)
-        return !stat.isFile() || (stat.mode & (S_IXUSR | S_IXGRP | S_IXOTH)) === 0
-      } catch (err) {
-        // err ignored
         return true
       }
     }

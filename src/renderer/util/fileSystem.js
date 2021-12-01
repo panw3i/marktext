@@ -3,7 +3,7 @@ import cp from 'child_process'
 import { isImageFile } from 'common/filesystem/paths'
 import dayjs from 'dayjs'
 import { clipboard } from 'electron'
-import { unlink, writeFileSync } from 'fs'
+import { writeFileSync } from 'fs'
 import fse from 'fs-extra'
 import { tmpdir } from 'os'
 import path from 'path'
@@ -81,6 +81,7 @@ export const uploadImage = async (pathname, image, preferences) => {
   })
 
   const uploadToSMMS = file => {
+    console.log('file', file)
     const api = 'https://sm.ms/api/upload'
     const formData = new window.FormData()
     formData.append('smfile', file)
@@ -89,6 +90,7 @@ export const uploadImage = async (pathname, image, preferences) => {
       url: api,
       data: formData
     }).then((res) => {
+      console.log('res.data.data', res.data.data)
       // TODO: "res.data.data.delete" should emit "image-uploaded"/handleUploadedImage in editor.js. Maybe add to image manager too.
       // This notification will be removed when the image manager implemented.
       const notice = new Notification('Copy delete URL', {
@@ -101,7 +103,8 @@ export const uploadImage = async (pathname, image, preferences) => {
 
       re(res.data.data.url)
     })
-      .catch(_ => {
+      .catch(err => {
+        console.log('err', err)
         rj('Upload failed, the image will be copied to the image folder')
       })
   }
@@ -133,15 +136,16 @@ export const uploadImage = async (pathname, image, preferences) => {
   }
 
   const uploadByCliScript = (filepath, name = null) => {
-    let isPath = true
+    // let isPath = true
     if (typeof filepath !== 'string') {
-      isPath = false
+      // isPath = false
       const data = new Uint8Array(filepath)
       filepath = path.join(tmpdir(), name || +new Date())
       writeFileSync(filepath, data)
     }
-    cp.execFile(cliScript, [filepath], (err, data) => {
-      !isPath && unlink(filepath)
+
+    cp.exec(cliScript + filepath, (err, data) => {
+      // !isPath && unlink(filepath)
       if (err) {
         return rj(err)
       }
@@ -175,8 +179,6 @@ export const uploadImage = async (pathname, image, preferences) => {
           uploadByGithub(base64, path.basename(imagePath))
         }
       }
-    } else {
-      re(image)
     }
   } else {
     const { size } = image
